@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name = "testngframetest">
+    <test name="API test">
+        <classes>
+            <parameters>
+                <parameter name="workbookpath" value="test_para1"/>
+                <parameter name="para2" value="test_para2"/>
+            </parameters>
+        </classes>
+    </test>
+</suite>
