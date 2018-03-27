@@ -2,6 +2,7 @@ package restfullAPITestng;
 
 import java.awt.Dialog;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.FormLayout;
 import org.eclipse.swt.widgets.Button;
@@ -31,7 +32,7 @@ import datainfo.AppData;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class Surface extends org.eclipse.swt.widgets.Composite {
+public class NewComposite extends org.eclipse.swt.widgets.Composite {
 	private Text DBURLtext;
 	private Label DBurl;
 	private Label label1;
@@ -50,6 +51,7 @@ public class Surface extends org.eclipse.swt.widgets.Composite {
 	*/
 	public static void main(String[] args) {
 		showGUI();
+		PropertyConfigurator.configure("log4j.properties");
 		
 	}
 	
@@ -66,7 +68,7 @@ public class Surface extends org.eclipse.swt.widgets.Composite {
 	public static void showGUI() {
 		Display display = Display.getDefault();		
 		Shell shell = new Shell(display);
-		Surface inst = new Surface(shell, SWT.NULL);
+		NewComposite inst = new NewComposite(shell, SWT.NULL);
 		Point size = inst.getSize();
 		shell.setLayout(new FillLayout());
 		shell.layout();
@@ -84,7 +86,7 @@ public class Surface extends org.eclipse.swt.widgets.Composite {
 		}
 	}
 
-	public Surface(org.eclipse.swt.widgets.Composite parent, int style) {
+	public NewComposite(org.eclipse.swt.widgets.Composite parent, int style) {
 		super(parent, style);
 		initGUI();
 	}
@@ -124,6 +126,7 @@ public class Surface extends org.eclipse.swt.widgets.Composite {
 			}
 			{
 				setsucess = new Button(this, SWT.PUSH | SWT.CENTER);
+				setsucess.setText("\u8bbe\u7f6e");
 				setsucess.setSize(60, 30);
 				setsucess.setBounds(70, 273, 63, 28);
 				setsucess.addSelectionListener(new SelectionAdapter() {
@@ -143,6 +146,7 @@ public class Surface extends org.eclipse.swt.widgets.Composite {
 			}
 			{
 				final Button startCase = new Button(this, SWT.PUSH | SWT.CENTER);
+				startCase.setText("\u6267\u884c\u7528\u4f8b");
 				startCase.setSize(60, 30);
 				startCase.setBounds(343, 189, 63, 28);
 				startCase.addSelectionListener(new SelectionAdapter() {

@@ -3,13 +3,8 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import getexcel.GetTestExcel;
 import getexcel.ReadExcel;
-
-
-
-
 import org.testng.ITest;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
@@ -27,49 +22,52 @@ public class HttpClientRequestTest implements ITest{
 		return "API test";
 	}
 
-	    
-	    @BeforeTest
-	    @Parameters("workbookpath")
-	    public void setup(String workbookpath) {
-	    	AppData.testCasePath = workbookpath;
-	    	GetTestExcel.setExcel();
-			GetTestExcel.getSheet(0);
-			GetTestExcel.getWritableSheet(0);
-	    }
-	    
-	    @DataProvider(name = "testParameters")
-	    protected Iterator<Object[]> testParameters (ITestContext context){
-	    	List<Object []> testparameters = new ArrayList<Object []>();
+//	    
+//	    @BeforeTest
+//	    @Parameters("workbookpath")
+//	    public void setup(String workbookpath) {
+//	    	AppData.testCasePath = workbookpath;
+//	    	GetTestExcel.setExcel();
+//			GetTestExcel.getSheet(0);
+//			GetTestExcel.getWritableSheet(0);
+//	    }
+//	    
+//	    @DataProvider(name = "testParameters")
+//	    protected Iterator<Object[]> testParameters (ITestContext context){
+//	    	List<Object []> testparameters = new ArrayList<Object []>();
+//
+//	    	for (int i = 0,row = 1; i < GetTestExcel.sheet.getRows()-1; i++) {			
+//	    		String request = ReadExcel.getRequest(row);
+//				String url= ReadExcel.getUrl(row);
+//				String affirm= ReadExcel.getAffirm(row);
+//				
+//				testparameters.add(new String []{request,url,affirm,row+""});
+//				row++;
+//			}
+//	    	
+//	    	return testparameters.iterator();
+//	    }
+//	    
+//	    //读取用例并请求，并写入结果
+//	    @Test(dataProvider="testParameters")
+//	    public static void requestAndWriteResult (String request,String url,String affirm,String rowstring){
+//	    	try {
+//				String respone = HttpRequest.sendPost(url, request);
+//				
+//				int row = Integer.parseInt(rowstring);
+//				if (respone.contains(affirm)) {
+//					ReadExcel.writeResult(row, respone, true);
+//				}else{
+//					ReadExcel.writeResult(row, respone, false);
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//	    }
 
-	    	for (int i = 0,row = 1; i < GetTestExcel.sheet.getRows()-1; i++) {			
-	    		String request = ReadExcel.getRequest(row);
-				String url= ReadExcel.getUrl(row);
-				String affirm= ReadExcel.getAffirm(row);
-				
-				testparameters.add(new String []{request,url,affirm,row+""});
-				row++;
-			}
-	    	
-	    	return testparameters.iterator();
-	    }
+//	    ------------------------------------------分割线-----------------------------------------------------------------
 	    
-	    //读取用例并请求，并写入结果
-	    @Test(dataProvider="testParameters")
-	    public static void requestAndWriteResult (String request,String url,String affirm,String rowstring){
-	    	try {
-				String respone = HttpRequest.sendPost(url, request);
-				
-				int row = Integer.parseInt(rowstring);
-				if (respone.contains(affirm)) {
-					ReadExcel.writeResult(row, respone, true);
-				}else{
-					ReadExcel.writeResult(row, respone, false);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-	    }
-
+	    
 //	    @DataProvider(name = "WorkBookData")
 //	    protected Iterator<Object[]> testProvider(ITestContext context) {
 //
